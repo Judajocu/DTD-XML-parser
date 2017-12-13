@@ -1,0 +1,17 @@
+import xml.etree.ElementTree as ET
+
+tree = ET.parse('DTD1.xml')
+root = tree.getroot()
+
+DTD = open('DTD1.dtd')
+line = DTD.readlines()
+DTD.close()
+arr = [elem.rstrip('\n') for elem in line]
+str = arr[0]
+
+for child in root:
+    if root.tag in str and str.find(root.tag) < str.find(child.tag):
+        if child.tag in str:
+            print ("Vamos bien")
+        else:
+            print ("No esta correcto el archivo")
